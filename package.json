@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/hoelzro/lunr-mutable-indexes/issues"
   },
+  "devDependencies": {
+    "mocha": "^3.0.2"
+  },
   "homepage": "https://github.com/hoelzro/lunr-mutable-indexes#readme"
 }

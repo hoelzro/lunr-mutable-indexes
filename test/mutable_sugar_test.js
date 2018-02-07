@@ -1,4 +1,3 @@
-var lunr = require('lunr');
 var assert = require('chai').assert;
 var lunrMutable = require('../lunr-mutable.js');
 

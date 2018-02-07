@@ -13,8 +13,6 @@ A simple search index can be created with the familiar `lunr` syntax; just subst
 
 var lunrMutable = require('lunr-mutable');
 
-var index = builder.build();
-
 var index = lunrMutable(function () {
   this.field('title')
   this.field('body')

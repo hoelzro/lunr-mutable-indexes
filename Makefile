@@ -9,3 +9,6 @@ lunr-mutable.js: lib/mutable_builder.js lib/mutable_index.js lib/lunr_mutable.js
 
 test: lunr-mutable.js
 	${MOCHA} test/*.js -u tdd -R dot
+
+clean:
+	rm lunr-mutable.js

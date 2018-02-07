@@ -21,31 +21,15 @@ suite('mutable indexes', function () {
       wordCount: 16
     }]
 
-    var builder = new lunrMutable.Builder
+    this.idx = lunrMutable(function () {
+       this.field('title')
+       this.field('body')
+       this.ref('id')
 
-    builder.pipeline.add(
-      lunr.trimmer,
-      lunr.stopWordFilter,
-      lunr.stemmer
-    )
-
-    builder.searchPipeline.add(
-      lunr.stemmer
-    )
-
-    var config = function () {
-      this.ref('id')
-      this.field('title')
-      this.field('body')
-
-      documents.forEach(function (document) {
-        this.add(document)
-      }, this)
-    }
-
-    config.call(builder, builder)
-
-    this.idx = builder.build()
+       documents.forEach(function (document) {
+         this.add(document)
+       }, this)
+    })
 
     this.idx.add({
       id: 'd',

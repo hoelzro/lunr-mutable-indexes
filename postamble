@@ -24,8 +24,6 @@
      * can return a function as the exported value.
      */
     return {
-        MutableBuilder: MutableBuilder,
-        MutableIndex: MutableIndex
-    }
+        lunrMutable
   }))
 })();

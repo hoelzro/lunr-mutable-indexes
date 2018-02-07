@@ -11,7 +11,7 @@ A simple search index can be created with the familiar `lunr` syntax; just subst
 
 ```js
 
-var lunrMutable = require('lunr-mutable');
+var lunrMutable = require('lunr-mutable-indexes');
 
 var index = lunrMutable(function () {
   this.field('title')
@@ -52,7 +52,7 @@ index.update({
 });
 ```
 
-Index serialization also works, with the Index namespace accessible through the lunrMutable object.
+Index serialization also works, with the Index namespace accessible through the `lunr-mutable-indexes` object.
 
 ```js
 // Serialize an index:

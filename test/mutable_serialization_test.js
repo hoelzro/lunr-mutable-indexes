@@ -1,6 +1,6 @@
 var lunr = require('lunr');
 var assert = require('chai').assert;
-var { MutableBuilder, MutableIndex } = require('../lunr-mutable.js');
+var lunrMutable = require('../lunr-mutable.js');
 
 suite('mutable serialization', function () {
   setup(function () {
@@ -21,7 +21,7 @@ suite('mutable serialization', function () {
       wordCount: 16
     }]
 
-    var builder = new MutableBuilder
+    var builder = new lunrMutable.Builder
 
     builder.pipeline.add(
       lunr.trimmer,
@@ -55,7 +55,7 @@ suite('mutable serialization', function () {
     });
 
     this.serializedIdx = JSON.stringify(this.idx)
-    this.loadedIdx = MutableIndex.load(JSON.parse(this.serializedIdx))
+    this.loadedIdx = lunrMutable.Index.load(JSON.parse(this.serializedIdx))
   })
 
   test('loadedAddWorked', function () {

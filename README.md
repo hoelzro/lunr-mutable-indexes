@@ -7,60 +7,67 @@ their indexes with new data.  That's what this library is for.
 
 # Example
 
+A simple search index can be created with the familiar `lunr` syntax; just substitute `lunr-mutable` for `lunr`.
+
 ```js
 
-var lunr = require('lunr');
-var { MutableBuilder, MutableIndex } = require('lunr-mutable');
+var lunrMutable = require('lunr-mutable-indexes');
 
-var builder = new MutableBuilder();
+var index = lunrMutable(function () {
+  this.field('title')
+  this.field('body')
 
-// Add default pipeline and searchPipeline components - sorry,
-// no sugary builder function yet!
-builder.pipeline.add(
-  lunr.trimmer,
-  lunr.stopWordFilter,
-  expandQuery,
-  lunr.stemmer
-);
-
-builder.searchPipeline.add(
-  lunr.stemmer
-);
-
-// Define the fields of documents
-builder.field('title');
-builder.field('body');
-
-builder.add({
+  this.add({
     "title": "Twelfth-Night",
     "body": "If music be the food of love, play on: Give me excess of it…",
     "author": "William Shakespeare",
     "id": "1"
-});
+  })
+})
+```
 
-// Works just like lunr.js
-var index = builder.build();
+Now, with a mutable index, we can add...
 
-// But now you can add...
+```js
 index.add({
     "title": "Merchant of Venice",
     "body": "You speak an infinite deal of nothing.",
     "author": "William Shakespeare",
     "id": "2"
 });
+```
 
-// remove...
+Remove...
+
+```js
 index.remove({ id: "1" });
+```
 
-// or update existing documents.
+Or update existing documents.
+
+```js
 index.update({
     "body": "With mirth and laughter let old wrinkles come.",
     "id": "2"
 });
+```
 
-// You can also serialize an index:
+Index serialization also works, with the Index namespace accessible through the `lunr-mutable-indexes` object.
+
+```js
+// Serialize an index:
 var serialized = JSON.stringify(index);
 
 // ...and deserialize it later:
-var sameIndex = MutableIndex.load(JSON.parse(serialized));
+var sameIndex = lunrMutable.Index.load(JSON.parse(serialized));
 ```
+
+# Caveats
+
+The main tradeoffs with `lunr-mutable-index` were originally discussed in [this PR](https://github.com/olivernn/lunr.js/pull/315) in `lunr`.
+* Mutable indexes work by having a handle to their original builder - this inflates the index size a bit.
+* Changing a builder's tokenizer won't persist across serialization boundaries.
+* Gaps in builder.termIndex may build up when documents are deleted.
+* The index is completely rebuilt when a document is added/updated/removed
+
+Work is ongoing to make improvements with these potential drawbacks, but please feel free to contribute fixes!

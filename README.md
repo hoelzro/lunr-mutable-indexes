@@ -71,3 +71,10 @@ The main tradeoffs with `lunr-mutable-index` were originally discussed in [this 
 * The index is completely rebuilt when a document is added/updated/removed
 
 Work is ongoing to make improvements with these potential drawbacks, but please feel free to contribute fixes!
+
+# Thanks
+
+I wrote a simple extension to lunr.js - I would like to thank the following people for helping to make my life easier:
+
+  * Oliver Nightingale (@olivernn) for writing lunr.js in the first place!
+  * John Kupko (@k00p) for making the library easier to use and helping with some of the NPM plumbing!

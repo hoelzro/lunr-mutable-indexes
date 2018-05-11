@@ -4,7 +4,8 @@
   "description": "Mutable indexes for lunr.js 2.1.x",
   "main": "lunr-mutable.js",
   "scripts": {
-    "test": "make test"
+    "test": "make test",
+    "prepare": "make lunr-mutable.js"
   },
   "repository": {
     "type": "git",
@@ -26,8 +27,5 @@
   "homepage": "https://github.com/hoelzro/lunr-mutable-indexes#readme",
   "dependencies": {
     "lunr": ">= 2.1.5 < 2.3.0"
-  },
-  "scripts": {
-      "prepare": "make lunr-mutable.js"
   }
 }

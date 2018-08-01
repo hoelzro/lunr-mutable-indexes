@@ -1,7 +1,7 @@
 {
   "name": "lunr-mutable-indexes",
-  "version": "0.3.0",
-  "description": "Mutable indexes for lunr.js 2.1.x or greater",
+  "version": "2.3.0",
+  "description": "Mutable indexes for lunr.js 2.x or greater",
   "main": "lunr-mutable.js",
   "scripts": {
     "test": "make test",

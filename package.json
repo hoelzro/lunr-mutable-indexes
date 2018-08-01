@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/hoelzro/lunr-mutable-indexes#readme",
   "dependencies": {
-    "lunr": ">= 2.1.5 < 2.3.0"
+    "lunr": ">= 2.3.0 < 2.4.0"
   }
 }

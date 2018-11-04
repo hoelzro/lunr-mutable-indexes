@@ -58,4 +58,25 @@ suite('mutable scoring', function () {
 
     assert.equal(immutableResults[0].score, mutableResults[0].score)
   })
+
+  test("repeated removal + add in builder doesn't affect scoring", function () {
+    let onceBuilder = setupBuilder(lunrMutable)
+    let twiceBuilder = setupBuilder(lunrMutable)
+
+    for(let document of documents) {
+      onceBuilder.add(document)
+
+      twiceBuilder.add(document)
+      twiceBuilder.remove(document)
+      twiceBuilder.add(document)
+    }
+
+    let onceIndex = onceBuilder.build()
+    let twiceIndex = twiceBuilder.build()
+
+    let onceResults = onceIndex.search('green')
+    let twiceResults = twiceIndex.search('green')
+
+    assert.equal(onceResults[0].score, twiceResults[0].score)
+  })
 })
